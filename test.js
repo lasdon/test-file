@@ -1,3 +1,3 @@
 let a=7;
-print(a);
-//let message = '${a}'
+//print(a);
+let message = '${a}'

@@ -1,4 +1,5 @@
 let a=7;
-print(a); 
+console.log(a);
+//print(a); 
 //document.write("a=${a}");
 

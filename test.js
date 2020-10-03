@@ -1,3 +1,4 @@
 let a=7;
-document.write("a=${a}");
+print(a); 
+//document.write("a=${a}");
 

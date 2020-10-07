@@ -14,6 +14,7 @@
         <ul>
             <li>文字の<red1>色</red1>を変える
             <li>箇条書きを番号で管理する。
+            <li>javaスクリプトのプログラムを埋め込める。
         </ul>
 <br>上から作成していく。
 <h1>
@@ -26,17 +27,35 @@
 
 <!--<script type="text/javascript" src="test.js"> </script>-->
 
-<br>javaスクリプトの出力
-
-インライン
+<h1>javaスクリプトの出力を示す。</h1>
+プログラムを埋め込むことでき,定数の定義と,for構文の検証を行う。
 <script type="text/javascript">
 let a=5
   document.write("a="+a+"<br>\n");//"文字列" <br>htmlでの改行も合わせる。
   for (let i = 0 ; i < 5 ; i++){
       document.write(i);
   }
+  document.write("<br>\n");
 </script>
-
+次に配列の記述を試す。int型の二次元配列を示す。
+<script type="text/javascript">
+int a[3][3]
+  for (let i = 0 ; i < 3 ; i++){
+        for (let j = 0 ; i < 3 ; i++){
+            a[i][j]=i+j;
+  }
+  }
+  
+    for (let i = 0 ; i < 3 ; i++){
+        for (let j = 0 ; i < 3 ; i++){
+            document.write(a[i][j]);
+  }
+  document.write("<br>\n");
+  }
+  
+  document.write("<br>\n");
+</script>
+と3x3の配列を示した。
 
 
 <!-- admax -->

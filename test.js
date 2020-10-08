@@ -10,6 +10,7 @@ let b=[1,2,3]
 document.write("b[2]="+b[2])
 document.write("<br>")
 document.write("多次元配列の検証として2次元配列を定義する。<br>")
+
 let c=[[1,2],[3,4]]
 
 for (let j = 0 ; j < 2 ; j++){
@@ -17,7 +18,6 @@ for (let j = 0 ; j < 2 ; j++){
         c[j][k]=j*k
     }
 }
-
 
 for (let j = 0 ; j < 2 ; j++){
     for (let k = 0 ; k < 2 ; k++){

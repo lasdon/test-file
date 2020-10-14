@@ -1,4 +1,8 @@
-/*
+function swap(a,c,e,b,d,f){
+    let aa=a[c][e];
+    a[c][e] =b[d][f];
+    b[d][f]= aa;
+}
 function InitRule(a){
     let i;
     let j;
@@ -37,60 +41,59 @@ function PrintRule(a){
 }
 
 //PrintRule(cube);
-document.write("次に色をかき混ぜます。<br>");
+document.write("左下(4)を固定して,次に色をかき混ぜます。左右どちらに回しても結果の面は同じになります。上下に回す場合も同様です。<br>");
 function upspin(a){
-    let b;
-    b=new Array(5);
-    b[0]=new Array(2);//上
-    b[1]=new Array(1);//側面 上
-    b[2]=new Array(2);//側面 右
-    b[3]=new Array(1);//側面 下
-    b[4]=new Array(2);//下
+    swap(a,2,0,a,2,1);
+    swap(a,1,1,a,3,0);
+    swap(a,0,1,a,5,2);
+    swap(a,0,2,a,5,1);
+}
+/*上面を1から0方面に回す*/
+function leftspin(a){
+    swap(a,0,0,a,5,1);
+    swap(a,0,1,a,5,0);
+    swap(a,1,0,a,1,1);
+    swap(a,2,0,a,4,1);
+}
+document.write("<br>表示を展開図にする。");
+function diaRule(a){
+    document.write(a[1][0]);
+    document.write(a[1][1]+"<br>");
+    
+    document.write(a[4][1]);
+    document.write(a[0][0]);
+    document.write(a[0][1]);
+    document.write(a[2][0]+"<br>");
+    
+    document.write(a[4][0]);
+    document.write(a[0][3]);
+    document.write(a[0][2]);
+    document.write(a[2][1]+"<br>");
+    
+    document.write(a[3][1]);
+    document.write(a[3][0]+"<br>");
+    
+    document.write(a[5][3]);
+    document.write(a[5][2]+"<br>");
+    
+    document.write(a[5][0]);
+    document.write(a[5][1]+"<br>");
+}
+document.write("<br>");
+diaRule(cube);
 
-    //InitRule(b);
-    
-    b[0][0] = a[0][1];
-    b[0][1] = a[0][2];
-    
-    b[1][0] = a[0][1];
-    
-    b[2][0] = a[0][0];
-    b[2][1] = a[0][1];
-    
-    b[3][0] = a[0][0];
-    
-    b[4][0] = a[0][1];
-    b[4][1] = a[0][2];
- aaa = bbb + (bbb = aaa, 0);
- aaa = bbb + (bbb = aaa, 0);
- aaa = bbb + (bbb = aaa, 0);
- aaa = bbb + (bbb = aaa, 0);
- 
- 
-    swap(b[2][0],b[2][1]);
-    swap(b[1][0],b[3][0]);
-    swap(b[0][0],b[4][1]);
-    swap(b[0][1],b[4][0]);
-    
-    a[0][1]=b[0][0];
-    a[0][2]=b[0][1];
-    a[0][1]=b[1][0];
-    a[0][0]=b[2][0];
-    a[0][1]=b[2][1];
-    a[0][0]=b[3][0];
-    a[0][1]=b[4][0];
-    a[0][2]=b[4][1];
+document.write("<br>色の組み合わせを調べます。既出の組み合わせか検討しながら探索させます。");
+/*
+upspin(cube);
+leftspin(cube);
+diaRule(cube);
+*/
+document.write("<br>試行回数異なる面が四つ求められたら停止します。");
+
+let kk=0;
+let res_cube= new Array(4);
+
+for(kk=0;kk<15;kk++) {
+    res_cube[1][kk]=8;
 }
 
-//upspin(cube);
-//PrintRule(cube);
-*/
-
-
-let aaa = 10;
-let bbb = 2;
-
-aaa = bbb + (bbb = aaa, 0);
-document.write(aaa+""+bbb+"");
-aaa = bbb + (bbb = aaa, 0);
-document.write(aaa+""+bbb+"");

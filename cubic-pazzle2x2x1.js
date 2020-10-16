@@ -89,11 +89,17 @@ leftspin(cube);
 diaRule(cube);
 */
 document.write("<br>試行回数異なる面が四つ求められたら停止します。");
+let ans=3;
+let res_cube= new Array(ans);//記録する面の数を設定
 
-let kk=0;
-let res_cube= new Array(4);
-
-for(kk=0;kk<15;kk++) {
-    res_cube[1][kk]=8;
+/*res_cube 初期化*/
+for(let ii=0;ii<res_cube.length;ii++) {
+    res_cube[ii]=new Array(cube.length);
+    for(let jj=0;jj<res_cube[ii].length;jj++) {
+        res_cube[ii]=new Array(cube[jj].length)
+        for(let kk=0;jj<res_cube[ii][jj].length;kk++) {
+            jj<res_cube[ii][jj][kk]=-1;
+        }
+    }
 }
 

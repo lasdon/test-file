@@ -2,9 +2,10 @@
         <html>
         <head>
             <title>FreeCAD model</title>
-            <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r50/three.min.js"></script>
-            
-            <script>
+            <script type="text/javascript" src="three.js"> </script>
+        </head>
+        <body>
+                    <script>
             
             var camera, controls, scene, renderer;
             
@@ -69,10 +70,10 @@
                 geom.faces.push( new THREE.Face3(7, 3, 5) );
                 geom.faces.push( new THREE.Face3(6, 0, 2) );
                 geom.faces.push( new THREE.Face3(6, 2, 4) );
-                var basematerial = new THREE.MeshBasicMaterial( { color: 0xcccccc } );
+                var basematerial = new THREE.MeshBasicMaterial( { color: 22222222 } );
                 var mesh = new THREE.Mesh( geom, basematerial );
                 scene.add( mesh );
-                var linematerial = new THREE.LineBasicMaterial({linewidth: 1, color: 0x000000,});
+                var linematerial = new THREE.LineBasicMaterial({linewidth: 1, color: 11111111,});
                 var wire = new THREE.Geometry();
                 wire.vertices.push(new THREE.Vector3(0.0, 10.0, 10.0));
                 wire.vertices.push(new THREE.Vector3(0.0, 10.0, 5.0));
@@ -232,6 +233,5 @@
                 renderer.render( scene, camera );
             };
             </script>
-        </head>
-        <body></body>
+        </body>
         </html>

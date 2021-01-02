@@ -43,7 +43,7 @@
                 controls.staticMoving = true;//
                 controls.dynamicDampingFactor = 0.3;
                 controls.keys = [ 70, 70, 70 ];
-                //controls.touche = new THREE.TOUCH.ROTATE
+                //controls.touches = new THREE.TOUCH.ROTATE
         
                 var geom = new THREE.Geometry();
                 var v0 = new THREE.Vector3(0.0,10.0,10.0);
@@ -219,7 +219,7 @@
                 scene.add(line);
  // placeholder for the FreeCAD objects
         
-                var light = new THREE.PointLight( 0xFFFF00 );
+                var light = new THREE.PointLight( 0x222200 );
                 light.position.set( -10000, -10000, 10000 );
                 scene.add( light );
                 renderer.setClearColor(0xeeeeee, 1);

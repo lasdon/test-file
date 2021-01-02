@@ -3,7 +3,8 @@
         <head>
             <title>FreeCAD model</title>
             
-            <script type="text/javascript" src="three(FCAD).js"> </script>
+            <script type="text/javascript" src="three.min.js"> </script>
+            <script type="text/javascript" src="OrbitControls.js"> </script>
             
         </head>
         <body>
@@ -41,7 +42,7 @@
                 //controls.staticMoving = true;//
                 controls.dynamicDampingFactor = 0.3;
                 controls.keys = [ 70, 70, 70 ];
-                //controls.touches = THREE.TOUCH.ROTATE
+                //controls.touche = new THREE.TOUCH.ROTATE
         
                 var geom = new THREE.Geometry();
                 var v0 = new THREE.Vector3(0.0,10.0,10.0);

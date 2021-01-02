@@ -38,7 +38,7 @@
                  // placeholder for the FreeCAD camera
         
                 controls = new THREE.OrbitControls( camera , renderer.domElement );
-                controls.touches = THREE.TOUCH.ROTATE
+                controls.touches
                 controls.rotateSpeed = 2.0;
                 controls.zoomSpeed = 1.2;
                 controls.panSpeed = 0.8;
@@ -46,7 +46,8 @@
                 //controls.noPan = false;
                 //controls.staticMoving = true;//
                 controls.dynamicDampingFactor = 0.3;
-                controls.keys = [ 70, 70, 70 ];
+                controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+                controls.keys = [ 37, 38, 39, 40 ];
                 
         
                 var geom = new THREE.Geometry();
@@ -227,9 +228,9 @@
                 light.position.set( -10000, -10000, 10000 );
                 scene.add( light );
                 renderer.setClearColor(0x333333, 1);
-                
                 renderer.render( scene, camera );
-                animate();
+                
+                animate();//ループ?
                 
             };
             

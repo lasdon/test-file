@@ -12,7 +12,8 @@
 
                 var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
                 var VIEW_ANGLE = 35, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
-
+                var touches = event.changedTouches ;
+                
                 renderer = new THREE.WebGLRenderer();
                 renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
                 document.body.appendChild( renderer.domElement );

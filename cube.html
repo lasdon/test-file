@@ -2,11 +2,11 @@
         <html>
         <head>
             <title>FreeCAD model</title>
-            <script type="text/javascript" src="three.min.js"> </script>
-            <script type="text/javascript" src="OrbitControls.js"> </script>
+
         </head>
         <body>
-          
+            <script type="text/javascript" src="three.min.js"> </script>
+            <script type="text/javascript" src="OrbitControls.js"> </script>
 
           
           <script>
@@ -33,7 +33,8 @@
                 camera.lookAt( scene.position );
                  // placeholder for the FreeCAD camera
         
-                controls = new THREE.OrbitControls( camera/* , renderer.domElement */);
+                controls = new THREE.OrbitControls( camera , renderer.domElement );
+                /*  */
                 controls.rotateSpeed = 2.0;
                 controls.zoomSpeed = 1.2;
                 controls.panSpeed = 0.8;

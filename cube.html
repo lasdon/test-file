@@ -38,14 +38,16 @@
                  // placeholder for the FreeCAD camera
         
                 controls = new THREE.OrbitControls( camera , renderer.domElement );
-                controls.centor = [0,0,0]
-                controls.rotateSpeed = 2.0;
+                controls.rotateSpeed = 1.0;
                 controls.zoomSpeed = 1.2;
                 controls.panSpeed = 0.8;
                 controls.noZoom = false;//
                 controls.noPan = false;
                 controls.staticMoving = true;//
                 controls.dynamicDampingFactor = 0.3;
+                controls.target.x =5;
+                controls.target.y =5;
+                controls.target.z =5;
                 controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
                 controls.autoRotate = true;
                 //controls.keys = [ 37, 38, 39, 40 ];

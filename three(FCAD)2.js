@@ -1,12 +1,98 @@
 // three.min.js - http://github.com/mrdoob/three.js
-'use strict';var THREE=THREE||{REVISION:"50"};
-void 0===self.console&&(self.console={info:function(){},log:function(){},debug:function(){},warn:function(){},error:function(){}});void 0===self.Int32Array&&(self.Int32Array=Array,self.Float32Array=Array);
-(function(){for(var a=0,b=["ms","moz","webkit","o"],c=0;c<b.length&&!window.requestAnimationFrame;++c){window.requestAnimationFrame=window[b[c]+"RequestAnimationFrame"];window.cancelAnimationFrame=window[b[c]+"CancelAnimationFrame"]||window[b[c]+"CancelRequestAnimationFrame"]}if(window.requestAnimationFrame===void 0)window.requestAnimationFrame=function(b){var c=Date.now(),e=Math.max(0,16-(c-a)),g=window.setTimeout(function(){b(c+e)},e);a=c+e;return g};if(window.cancelAnimationFrame===void 0)window.cancelAnimationFrame=
-function(a){clearTimeout(a)}})();THREE.FrontSide=0;THREE.BackSide=1;THREE.DoubleSide=2;THREE.NoShading=0;THREE.FlatShading=1;THREE.SmoothShading=2;THREE.NoColors=0;THREE.FaceColors=1;THREE.VertexColors=2;THREE.NoBlending=0;THREE.NormalBlending=1;THREE.AdditiveBlending=2;THREE.SubtractiveBlending=3;THREE.MultiplyBlending=4;THREE.CustomBlending=5;THREE.AddEquation=100;THREE.SubtractEquation=101;THREE.ReverseSubtractEquation=102;THREE.ZeroFactor=200;THREE.OneFactor=201;THREE.SrcColorFactor=202;
-THREE.OneMinusSrcColorFactor=203;THREE.SrcAlphaFactor=204;THREE.OneMinusSrcAlphaFactor=205;THREE.DstAlphaFactor=206;THREE.OneMinusDstAlphaFactor=207;THREE.DstColorFactor=208;THREE.OneMinusDstColorFactor=209;THREE.SrcAlphaSaturateFactor=210;THREE.MultiplyOperation=0;THREE.MixOperation=1;THREE.UVMapping=function(){};THREE.CubeReflectionMapping=function(){};THREE.CubeRefractionMapping=function(){};THREE.SphericalReflectionMapping=function(){};THREE.SphericalRefractionMapping=function(){};
-THREE.RepeatWrapping=1E3;THREE.ClampToEdgeWrapping=1001;THREE.MirroredRepeatWrapping=1002;THREE.NearestFilter=1003;THREE.NearestMipMapNearestFilter=1004;THREE.NearestMipMapLinearFilter=1005;THREE.LinearFilter=1006;THREE.LinearMipMapNearestFilter=1007;THREE.LinearMipMapLinearFilter=1008;THREE.UnsignedByteType=1009;THREE.ByteType=1010;THREE.ShortType=1011;THREE.UnsignedShortType=1012;THREE.IntType=1013;THREE.UnsignedIntType=1014;THREE.FloatType=1015;THREE.UnsignedShort4444Type=1016;
-THREE.UnsignedShort5551Type=1017;THREE.UnsignedShort565Type=1018;THREE.AlphaFormat=1019;THREE.RGBFormat=1020;THREE.RGBAFormat=1021;THREE.LuminanceFormat=1022;THREE.LuminanceAlphaFormat=1023;THREE.Clock=function(a){this.autoStart=a!==void 0?a:true;this.elapsedTime=this.oldTime=this.startTime=0;this.running=false};THREE.Clock.prototype.start=function(){this.oldTime=this.startTime=Date.now();this.running=true};THREE.Clock.prototype.stop=function(){this.getElapsedTime();this.running=false};
-THREE.Clock.prototype.getElapsedTime=function(){return this.elapsedTime=this.elapsedTime+this.getDelta()};THREE.Clock.prototype.getDelta=function(){var a=0;this.autoStart&&!this.running&&this.start();if(this.running){var b=Date.now(),a=0.001*(b-this.oldTime);this.oldTime=b;this.elapsedTime=this.elapsedTime+a}return a};THREE.Color=function(a){a!==void 0&&this.setHex(a);return this};
+'use strict';
+var THREE=THREE||{REVISION:"50"};
+void 0===self.console&&(self.console={
+                        info:function(){},
+                        log:function(){},
+                        debug:function(){},
+                        warn:function(){},
+                        error:function(){}});
+void 0===self.Int32Array&&(
+                           self.Int32Array=Array,
+                           self.Float32Array=Array);
+(function(){
+ for(var a=0,b=["ms","moz","webkit","o"],
+     c=0;
+     c<b.length&&!window.requestAnimationFrame;
+     ++c){window.requestAnimationFrame=window[b[c]+"RequestAnimationFrame"];
+ window.cancelAnimationFrame=window[b[c]+"CancelAnimationFrame"]||window[b[c]+"CancelRequestAnimationFrame"]
+ 
+ }if(window.requestAnimationFrame===void 0)window.requestAnimationFrame=function(b){var c=Date.now(),e=Math.max(0,16-(c-a)),g=window.setTimeout(function(){b(c+e)},e);a=c+e;return g};
+ if(window.cancelAnimationFrame===void 0)window.cancelAnimationFrame=
+function(a){clearTimeout(a)}})();
+
+THREE.FrontSide=0;
+THREE.BackSide=1;
+THREE.DoubleSide=2;
+THREE.NoShading=0;
+THREE.FlatShading=1;
+THREE.SmoothShading=2;
+THREE.NoColors=0;
+THREE.FaceColors=1;
+THREE.VertexColors=2;
+
+THREE.NoBlending=0;
+THREE.NormalBlending=1;
+THREE.AdditiveBlending=2;
+THREE.SubtractiveBlending=3;
+THREE.MultiplyBlending=4;
+THREE.CustomBlending=5;
+THREE.AddEquation=100;
+THREE.SubtractEquation=101;
+THREE.ReverseSubtractEquation=102;
+THREE.ZeroFactor=200;
+THREE.OneFactor=201;
+THREE.SrcColorFactor=202;
+THREE.OneMinusSrcColorFactor=203;
+THREE.SrcAlphaFactor=204;
+THREE.OneMinusSrcAlphaFactor=205;
+THREE.DstAlphaFactor=206;
+THREE.OneMinusDstAlphaFactor=207;
+THREE.DstColorFactor=208;
+THREE.OneMinusDstColorFactor=209;
+THREE.SrcAlphaSaturateFactor=210;
+THREE.MultiplyOperation=0;
+THREE.MixOperation=1;
+THREE.UVMapping=function(){};
+THREE.CubeReflectionMapping=function(){};
+THREE.CubeRefractionMapping=function(){};
+THREE.SphericalReflectionMapping=function(){};
+THREE.SphericalRefractionMapping=function(){};
+THREE.RepeatWrapping=1E3;
+THREE.ClampToEdgeWrapping=1001;
+THREE.MirroredRepeatWrapping=1002;
+THREE.NearestFilter=1003;
+THREE.NearestMipMapNearestFilter=1004;
+THREE.NearestMipMapLinearFilter=1005;
+THREE.LinearFilter=1006;
+THREE.LinearMipMapNearestFilter=1007;
+THREE.LinearMipMapLinearFilter=1008;
+THREE.UnsignedByteType=1009;
+THREE.ByteType=1010;
+THREE.ShortType=1011;
+THREE.UnsignedShortType=1012;
+THREE.IntType=1013;
+THREE.UnsignedIntType=1014;
+THREE.FloatType=1015;
+THREE.UnsignedShort4444Type=1016;
+
+THREE.UnsignedShort5551Type=1017;
+THREE.UnsignedShort565Type=1018;
+THREE.AlphaFormat=1019;
+THREE.RGBFormat=1020;
+THREE.RGBAFormat=1021;
+THREE.LuminanceFormat=1022;
+THREE.LuminanceAlphaFormat=1023;
+
+THREE.Clock=function(a){this.autoStart=a!==void 0?a:true;this.elapsedTime=this.oldTime=this.startTime=0;this.running=false};
+THREE.Clock.prototype.start=function(){this.oldTime=this.startTime=Date.now();this.running=true};
+THREE.Clock.prototype.stop=function(){this.getElapsedTime();this.running=false};
+THREE.Clock.prototype.getElapsedTime=function(){return this.elapsedTime=this.elapsedTime+this.getDelta()};
+THREE.Clock.prototype.getDelta=function(){var a=0;
+    this.autoStart&&!this.running&&this.start();
+    if(this.running){var b=Date.now(),a=0.001*(b-this.oldTime);this.oldTime=b;this.elapsedTime=this.elapsedTime+a}return a};
+THREE.Color=function(a){a!==void 0&&this.setHex(a);return this};
+
 THREE.Color.prototype={constructor:THREE.Color,r:1,g:1,b:1,copy:function(a){this.r=a.r;this.g=a.g;this.b=a.b;return this},copyGammaToLinear:function(a){this.r=a.r*a.r;this.g=a.g*a.g;this.b=a.b*a.b;return this},copyLinearToGamma:function(a){this.r=Math.sqrt(a.r);this.g=Math.sqrt(a.g);this.b=Math.sqrt(a.b);return this},convertGammaToLinear:function(){var a=this.r,b=this.g,c=this.b;this.r=a*a;this.g=b*b;this.b=c*c;return this},convertLinearToGamma:function(){this.r=Math.sqrt(this.r);this.g=Math.sqrt(this.g);
 this.b=Math.sqrt(this.b);return this},setRGB:function(a,b,c){this.r=a;this.g=b;this.b=c;return this},setHSV:function(a,b,c){var d,f,e;if(c===0)this.r=this.g=this.b=0;else{d=Math.floor(a*6);f=a*6-d;a=c*(1-b);e=c*(1-b*f);b=c*(1-b*(1-f));if(d===0){this.r=c;this.g=b;this.b=a}else if(d===1){this.r=e;this.g=c;this.b=a}else if(d===2){this.r=a;this.g=c;this.b=b}else if(d===3){this.r=a;this.g=e;this.b=c}else if(d===4){this.r=b;this.g=a;this.b=c}else if(d===5){this.r=c;this.g=a;this.b=e}}return this},setHex:function(a){a=
 Math.floor(a);this.r=(a>>16&255)/255;this.g=(a>>8&255)/255;this.b=(a&255)/255;return this},lerpSelf:function(a,b){this.r=this.r+(a.r-this.r)*b;this.g=this.g+(a.g-this.g)*b;this.b=this.b+(a.b-this.b)*b;return this},getHex:function(){return Math.floor(this.r*255)<<16^Math.floor(this.g*255)<<8^Math.floor(this.b*255)},getContextStyle:function(){return"rgb("+Math.floor(this.r*255)+","+Math.floor(this.g*255)+","+Math.floor(this.b*255)+")"},clone:function(){return(new THREE.Color).setRGB(this.r,this.g,this.b)}};
@@ -24,11 +110,15 @@ f)}else{this.x=0;this.y=Math.atan2(l,d)}}else if(b==="XZY"){this.z=Math.asin(-c(
 "YXZ"){this.x=Math.asin(c(2*(a.x*a.w-a.y*a.z)));this.y=Math.atan2(2*(a.x*a.z+a.y*a.w),g-d-f+e);this.z=Math.atan2(2*(a.x*a.y+a.z*a.w),g-d+f-e)}else if(b==="ZXY"){this.x=Math.asin(c(2*(a.x*a.w+a.y*a.z)));this.y=Math.atan2(2*(a.y*a.w-a.z*a.x),g-d-f+e);this.z=Math.atan2(2*(a.z*a.w-a.x*a.y),g-d+f-e)}else if(b==="ZYX"){this.x=Math.atan2(2*(a.x*a.w+a.z*a.y),g-d-f+e);this.y=Math.asin(c(2*(a.y*a.w-a.x*a.z)));this.z=Math.atan2(2*(a.x*a.y+a.z*a.w),g+d-f-e)}else if(b==="YZX"){this.x=Math.atan2(2*(a.x*a.w-a.z*
 a.y),g-d+f-e);this.y=Math.atan2(2*(a.y*a.w-a.x*a.z),g+d-f-e);this.z=Math.asin(c(2*(a.x*a.y+a.z*a.w)))}else if(b==="XZY"){this.x=Math.atan2(2*(a.x*a.w+a.y*a.z),g-d+f-e);this.y=Math.atan2(2*(a.x*a.z+a.y*a.w),g+d-f-e);this.z=Math.asin(c(2*(a.z*a.w-a.x*a.y)))}return this},getScaleFromMatrix:function(a){var b=this.set(a.elements[0],a.elements[1],a.elements[2]).length(),c=this.set(a.elements[4],a.elements[5],a.elements[6]).length(),a=this.set(a.elements[8],a.elements[9],a.elements[10]).length();this.x=
 b;this.y=c;this.z=a;return this},equals:function(a){return a.x===this.x&&a.y===this.y&&a.z===this.z},isZero:function(){return this.lengthSq()<1E-4},clone:function(){return new THREE.Vector3(this.x,this.y,this.z)}};THREE.Vector4=function(a,b,c,d){this.x=a||0;this.y=b||0;this.z=c||0;this.w=d!==void 0?d:1};
+
+
 THREE.Vector4.prototype={constructor:THREE.Vector4,set:function(a,b,c,d){this.x=a;this.y=b;this.z=c;this.w=d;return this},copy:function(a){this.x=a.x;this.y=a.y;this.z=a.z;this.w=a.w!==void 0?a.w:1;return this},add:function(a,b){this.x=a.x+b.x;this.y=a.y+b.y;this.z=a.z+b.z;this.w=a.w+b.w;return this},addSelf:function(a){this.x=this.x+a.x;this.y=this.y+a.y;this.z=this.z+a.z;this.w=this.w+a.w;return this},sub:function(a,b){this.x=a.x-b.x;this.y=a.y-b.y;this.z=a.z-b.z;this.w=a.w-b.w;return this},subSelf:function(a){this.x=
 this.x-a.x;this.y=this.y-a.y;this.z=this.z-a.z;this.w=this.w-a.w;return this},multiplyScalar:function(a){this.x=this.x*a;this.y=this.y*a;this.z=this.z*a;this.w=this.w*a;return this},divideScalar:function(a){if(a){this.x=this.x/a;this.y=this.y/a;this.z=this.z/a;this.w=this.w/a}else{this.z=this.y=this.x=0;this.w=1}return this},negate:function(){return this.multiplyScalar(-1)},dot:function(a){return this.x*a.x+this.y*a.y+this.z*a.z+this.w*a.w},lengthSq:function(){return this.dot(this)},length:function(){return Math.sqrt(this.lengthSq())},
 normalize:function(){return this.divideScalar(this.length())},setLength:function(a){return this.normalize().multiplyScalar(a)},lerpSelf:function(a,b){this.x=this.x+(a.x-this.x)*b;this.y=this.y+(a.y-this.y)*b;this.z=this.z+(a.z-this.z)*b;this.w=this.w+(a.w-this.w)*b;return this},clone:function(){return new THREE.Vector4(this.x,this.y,this.z,this.w)},setAxisAngleFromQuaternion:function(a){this.w=2*Math.acos(a.w);var b=Math.sqrt(1-a.w*a.w);if(b<1E-4){this.x=1;this.z=this.y=0}else{this.x=a.x/b;this.y=
 a.y/b;this.z=a.z/b}return this},setAxisAngleFromRotationMatrix:function(a){var b,c,d,a=a.elements,f=a[0];d=a[4];var e=a[8],g=a[1],h=a[5],i=a[9];c=a[2];b=a[6];var j=a[10];if(Math.abs(d-g)<0.01&&Math.abs(e-c)<0.01&&Math.abs(i-b)<0.01){if(Math.abs(d+g)<0.1&&Math.abs(e+c)<0.1&&Math.abs(i+b)<0.1&&Math.abs(f+h+j-3)<0.1){this.set(1,0,0,0);return this}a=Math.PI;f=(f+1)/2;h=(h+1)/2;j=(j+1)/2;d=(d+g)/4;e=(e+c)/4;i=(i+b)/4;if(f>h&&f>j)if(f<0.01){b=0;d=c=0.707106781}else{b=Math.sqrt(f);c=d/b;d=e/b}else if(h>
 j)if(h<0.01){b=0.707106781;c=0;d=0.707106781}else{c=Math.sqrt(h);b=d/c;d=i/c}else if(j<0.01){c=b=0.707106781;d=0}else{d=Math.sqrt(j);b=e/d;c=i/d}this.set(b,c,d,a);return this}a=Math.sqrt((b-i)*(b-i)+(e-c)*(e-c)+(g-d)*(g-d));Math.abs(a)<0.001&&(a=1);this.x=(b-i)/a;this.y=(e-c)/a;this.z=(g-d)/a;this.w=Math.acos((f+h+j-1)/2);return this}};
+
+
 THREE.EventTarget=function(){var a={};this.addEventListener=function(b,c){a[b]===void 0&&(a[b]=[]);a[b].indexOf(c)===-1&&a[b].push(c)};this.dispatchEvent=function(b){for(var c in a[b.type])a[b.type][c](b)};this.removeEventListener=function(b,c){var d=a[b].indexOf(c);d!==-1&&a[b].splice(d,1)}};THREE.Frustum=function(){this.planes=[new THREE.Vector4,new THREE.Vector4,new THREE.Vector4,new THREE.Vector4,new THREE.Vector4,new THREE.Vector4]};
 THREE.Frustum.prototype.setFromMatrix=function(a){var b=this.planes,c=a.elements,a=c[0],d=c[1],f=c[2],e=c[3],g=c[4],h=c[5],i=c[6],j=c[7],l=c[8],o=c[9],m=c[10],p=c[11],q=c[12],n=c[13],r=c[14],c=c[15];b[0].set(e-a,j-g,p-l,c-q);b[1].set(e+a,j+g,p+l,c+q);b[2].set(e+d,j+h,p+o,c+n);b[3].set(e-d,j-h,p-o,c-n);b[4].set(e-f,j-i,p-m,c-r);b[5].set(e+f,j+i,p+m,c+r);for(d=0;d<6;d++){a=b[d];a.divideScalar(Math.sqrt(a.x*a.x+a.y*a.y+a.z*a.z))}};
 THREE.Frustum.prototype.contains=function(a){for(var b=0,c=this.planes,b=a.matrixWorld,d=b.elements,a=-a.geometry.boundingSphere.radius*b.getMaxScaleOnAxis(),f=0;f<6;f++){b=c[f].x*d[12]+c[f].y*d[13]+c[f].z*d[14]+c[f].w;if(b<=a)return false}return true};THREE.Frustum.__v1=new THREE.Vector3;

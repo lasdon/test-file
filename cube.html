@@ -5,50 +5,23 @@
 
         </head>
         <body>
-        
-           <script type="text/javascript">
-    var rgb_color = 0;
-    function setSwipe(elem) {
-    var t = document.querySelector(elem);
-    var s_X;
-    var e_X;
-    var dist = 30;
-    t.addEventListener('touchstart', function(e) {
-     e.preventDefault();
-     s_X = e.touches[0].pageX;
-    });
-    t.addEventListener('touchmove', function(e) {
-     e.preventDefault();
-     e_X = e.changedTouches[0].pageX;
-    });
-    t.addEventListener('touchend', function(e) {
-      if (s_X > e_X + dist) {
-       t.textContent = '<<<?-左にスワイプされました';
-       rgb_color = rgb_color + 16;
-       t.style.backgroundColor = "rgb("+ rgb_color + ","+ rgb_color + "," + rgb_color + ")";
-      } else if (s_X + dist < e_X) {
-       t.textContent = '右にスワイプされました?->>>';
-       rgb_color = rgb_color ? 16;
-       t.style.backgroundColor = "rgb(" + rgb_color + "," + rgb_color + "," + rgb_color + ")";
-      }
-     });
-    }
-    setSwipe('.swipearea');
-  </script>
-        
             <script type="text/javascript" src="three.min.js"> </script>
             <script type="text/javascript" src="OrbitControls.js"> </script>
 
           
           <script>
+              
             var camera, controls, scene, renderer;
             window.onload = function() {
 
                 var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
                 var VIEW_ANGLE = 35, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+                
+                var theta = 0; // 追加
+                
                 //var touches = event.changedTouches ;
                 
-                renderer = new THREE.WebGLRenderer();
+                renderer = new THREE.WebGLRenderer({ antialias: true });
                 renderer.setSize( 0.8*SCREEN_WIDTH, 0.8*SCREEN_HEIGHT );
                 document.body.appendChild( renderer.domElement );
         
@@ -66,13 +39,12 @@
         
                 controls = new THREE.OrbitControls( camera , renderer.domElement );
                 controls.touches = THREE.TOUCH.ROTATE
-                /*  */
                 controls.rotateSpeed = 2.0;
                 controls.zoomSpeed = 1.2;
                 controls.panSpeed = 0.8;
-                controls.noZoom = false;//
-                controls.noPan = false;
-                controls.staticMoving = true;//
+                //controls.noZoom = false;//
+                //controls.noPan = false;
+                //controls.staticMoving = true;//
                 controls.dynamicDampingFactor = 0.3;
                 controls.keys = [ 70, 70, 70 ];
                 
@@ -255,20 +227,19 @@
                 light.position.set( -10000, -10000, 10000 );
                 scene.add( light );
                 renderer.setClearColor(0x333333, 1);
-                renderer.render( scene, camera );
                 
+                renderer.render( scene, camera );
                 animate();
+                
             };
             
             function animate(){
+                controls.update()
                 requestAnimationFrame( animate );
-                render();
-            };
-            
-            function render(){
-                controls.update();// マウス操作を表す
                 renderer.render( scene, camera );
             };
+
+          
             </script>
         </body>
         </html>
